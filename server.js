@@ -55,7 +55,7 @@ app.post(
             try {
                 // Check if user exists
                 let user = await User.findOne({ email: email});
-                if (user{
+                if (user) {
                     return res
                         .status(400)
                         .json({ errors: [{ msg: 'User already exists' }] });
@@ -76,7 +76,7 @@ app.post(
                 await user.save();
                 res.send('User successfully registered');
             } catch (error) {
-                res.status(500).send('Server error');
+                res.status(500).send('Server error ' + error);
             }
         }
     }
